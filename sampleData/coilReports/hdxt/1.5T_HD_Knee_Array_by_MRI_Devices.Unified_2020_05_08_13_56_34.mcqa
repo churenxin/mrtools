@@ -1,0 +1,24 @@
+#loct BIDMCWESTGE15T
+#com1 Multi-coil Element Test Tool run on 2020_05_08_13_56_34
+#offset 0 0 0 0 0 0 0 0 0 0 
+#ltbot 1 1 100000 25 2.02406e+07 3.95772 4.02341e+06 40.2341 512 1024 
+#rttop 1 8 100000 33 3.12247e+07 6.27662 6.2229e+06 62.229 512 1024 
+#units N/A N/A N/A N/A N/A N/A N/A N/A N/A N/A 
+#label Test_Number Signal_Image Scale_Factor ISNR_Spec ISig Noise ISNR Scaled_ISNR Comb_Rows Comb_Cols 
+#pass_fail PASS
+#coil_name 1.5T_HD_Knee_Array_by_MRI_Devices.Unified
+#pass_number 1
+#coil_serial  
+#num_tests 1
+#mcr_Status Warning: No valid MCR2/3 diagnostic data was found. Please run MCR2/3 to verify that the receive chains are OK. Do you wish to continue?
+#logical_coil_1 HD TRknee PA
+#port_coil_1 A,A,A,A,A,A,A,A
+#end
+1 1 100000 31 2.38346e+07 3.95772 6.02231e+06 60.2231 512 1024 
+1 2 100000 27 2.41625e+07 4.59048 5.26361e+06 52.6361 512 1024 
+1 3 100000 28 2.344e+07 4.38361 5.34719e+06 53.4719 512 1024 
+1 4 100000 25 2.02406e+07 4.08644 4.9531e+06 49.531 512 1024 
+1 5 100000 30 2.78162e+07 4.69203 5.92839e+06 59.2839 512 1024 
+1 6 100000 25 2.29448e+07 4.89184 4.69041e+06 46.9041 512 1024 
+1 7 100000 28 2.52534e+07 6.27662 4.02341e+06 40.2341 512 1024 
+1 8 100000 33 3.12247e+07 5.01771 6.2229e+06 62.229 512 1024 

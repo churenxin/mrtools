@@ -1,0 +1,26 @@
+#loct BIDMCWESTGE15T
+#com1 Multi-coil Element Test Tool run on 2020_05_08_14_07_47
+#offset 0 0 0 0 0 0 0 0 0 0 
+#ltbot 1 1 100000 11 1.7647e+06 0.965514 1.80158e+06 18.0158 512 512 
+#rttop 2 8 100000 43 8.24066e+06 1.07131 7.97761e+06 79.7761 512 768 
+#units N/A N/A N/A N/A N/A N/A N/A N/A N/A N/A 
+#label Test_Number Signal_Image Scale_Factor ISNR_Spec ISig Noise ISNR Scaled_ISNR Comb_Rows Comb_Cols 
+#pass_fail PASS
+#coil_name 1.5T_HD_8Ch_Foot_Ankle_Array_by_INVIVO
+#pass_number 1
+#coil_serial  
+#num_tests 2
+#mcr_Status Warning: No valid MCR2/3 diagnostic data was found. Please run MCR2/3 to verify that the receive chains are OK. Do you wish to continue?
+#logical_coil_1 HD Foot Ankle
+#logical_coil_2 HD Foot Ankle
+#port_coil_1 A,A,A,A,A
+#port_coil_2 A,A,A
+#end
+1 1 100000 26 4.66339e+06 1.0019 4.65457e+06 46.5457 512 768 
+1 2 100000 31 5.28412e+06 1.03524 5.10423e+06 51.0423 512 768 
+1 4 100000 43 8.24066e+06 1.03297 7.97761e+06 79.7761 512 768 
+1 5 100000 23 4.16966e+06 1.01047 4.12648e+06 41.2648 512 768 
+1 6 100000 26 4.86524e+06 0.965514 5.03902e+06 50.3902 512 768 
+2 3 100000 13 2.3193e+06 1.02766 2.25688e+06 22.5688 512 512 
+2 7 100000 11 1.7647e+06 0.979526 1.80158e+06 18.0158 512 512 
+2 8 100000 18 3.20769e+06 1.07131 2.99416e+06 29.9416 512 512 

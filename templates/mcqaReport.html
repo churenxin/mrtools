@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+        <title>GE MCQA Resuts</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+                font-size: 12px;
+                }
+                
+            th {
+                text-align: left;
+                }
+            * {
+              box-sizing: border-box;
+            }
+            /* Create three equal columns that floats next to each other */
+            .column {
+              float: left;
+              width: 33.33%;
+              padding: 10px;
+            }
+            
+            /* Clear floats after the columns */
+            .row:after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+            h1 {
+              font-size: 20px;
+            }
+            h2 {
+              font-size: 15px;
+            }
+            h3 {
+              font-size: 15px;
+            }
+            hr {
+              break-after: always;
+            }            
+        </style>
+    </head>
+
+    <body>
+    {% for coil in coilDict.values() %}
+        <h1>Coil Name: {{ coil.coilName }}</h1>
+        <h2>StationName: {{ coil.stationName }}</h2>
+        <h2>Test Date & Time: {{ coil.startTime }}</h2>
+        <h2>Overall Result: {{ coil.overallResult }}</h2>
+        <div class="row">
+        {% for test in coil.test %}
+            <div  class="column">
+            <h3> Test {{loop.index}} </h3>
+            <table style="background-color:#ffff;">
+            <tr>
+            <th>Image</th>
+            <th>SNR</th>
+            <th>Min. SNR</th>
+            <th>Result</th>
+            </tr>
+            {% for image in test.image %}
+                <tr> 
+                    <td>Image {{loop.index}}</td> 
+                    <td>{{image.SN.value}}</td> 
+                    <td>{{image.SN.min}}</td> 
+                    <td>{{image.SN.result}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+            </div>
+        {% endfor %}
+        </div>        
+        <hr/>
+    {% endfor %}
+    </body>
+</html>

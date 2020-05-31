@@ -1,0 +1,24 @@
+#loct XMR Deaconess 1 MRI
+#com1 Multi-coil Element Test Tool run on 2020_05_12_10_37_49
+#offset 0 0 0 0 0 0 0 0 0 0 
+#ltbot 1 1 100000 26 6.0387e+06 1.01711 5.21358e+06 52.1358 512 1024 
+#rttop 1 8 100000 38 9.89829e+06 1.23663 8.00496e+06 80.0496 512 1024 
+#units N/A N/A N/A N/A N/A N/A N/A N/A N/A N/A 
+#label Test_Number Signal_Image Scale_Factor ISNR_Spec ISig Noise ISNR Scaled_ISNR Comb_Rows Comb_Cols 
+#pass_fail PASS
+#coil_name 1.5T_HD_8Ch_High_Res_Brain_Array_by_Invivo
+#pass_number 1
+#coil_serial  
+#num_tests 1
+#mcr_Status mcr check PASSED
+#logical_coil_1 8HRBRAIN
+#port_coil_1 A,A,A,A,A,A,A,A
+#end
+1 1 100000 26 6.0387e+06 1.15826 5.21358e+06 52.1358 512 1024 
+1 2 100000 38 7.37389e+06 1.01711 7.24988e+06 72.4988 512 1024 
+1 3 100000 38 9.34642e+06 1.23663 7.55796e+06 75.5796 512 1024 
+1 4 100000 38 7.94493e+06 1.0601 7.49448e+06 74.9448 512 1024 
+1 5 100000 38 8.36739e+06 1.1522 7.26213e+06 72.6213 512 1024 
+1 6 100000 38 9.54495e+06 1.19353 7.99727e+06 79.9727 512 1024 
+1 7 100000 38 9.89829e+06 1.23652 8.00496e+06 80.0496 512 1024 
+1 8 100000 26 7.62375e+06 1.20863 6.30779e+06 63.0779 512 1024 
