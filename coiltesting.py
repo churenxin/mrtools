@@ -108,12 +108,12 @@ def genCoilReport(inDir,vendorString,**kwargs):
     for coilReport in files:
         tmpDict=readFun(inDir + coilReport)
         #print(tmpDict["coilName"])
-        dictOut.update({tmpDict["coilName"]:tmpDict})
+        dictOut.update({tmpDict["coilName"]+tmpDict["serialNumber"]:tmpDict})
         
     htmlStr=dict2html(dictOut,vendorString)
     
     if "outFile" in kwargs:
-        htmlOut=open("outFile","w")
+        htmlOut=open(kwargs["outFile"],"w")
         htmlOut.write(htmlStr)
         htmlOut.close()
     
