@@ -12,7 +12,7 @@ def parseSiemens(fileIn):
     # Reads Siemens exar1 file to a python dictionary
     
     # Example usage
-    #readCoilFiles.parseSiemens('/home/cjm/Projects/mrtools/sampleData/siemensCoil.xml')
+    #mrtools.coiltesting.parseSiemens('/home/cjm/Projects/mrtools/sampleData/siemensCoil.xml')
     
     import xml.etree.ElementTree as ET
     from parse import parse, search
@@ -57,8 +57,10 @@ def parseGE(fileIn):
     # Reads GE mcqa file to a python dictionary
     
     # Example usage
-    #readCoilFiles.parseGE('/home/cjm/Projects/mrtools/sampleData/GE/mcqaExample.txt')
+    #mrtools.coiltesting.parseGE('/home/cjm/Projects/mrtools/sampleData/GE/mcqaExample.txt')
     
+    import datetime
+
     dictOut={"test":[]}
     
     with open(fileIn,'r') as file:
@@ -66,16 +68,17 @@ def parseGE(fileIn):
             lineList=line.split(" ")
 
             if lineList[0]=="#loct":
-                dictOut.update({"stationName":lineList[-1].strip("\n")})
+                dictOut.update({"stationName":lineList[-1].strip("\n").capitalize()})
             
             if lineList[0]=="#com1":
-                dictOut.update({"startTime":lineList[-1].strip("\n")})
-                
+                #dictOut.update({"startTime":lineList[-1].strip("\n")})
+                dictOut.update({"startTime":datetime.datetime.strptime(lineList[-1].strip("\n"),'%Y_%m_%d_%H_%M_%S')})
+
             if lineList[0]=="#pass_fail":
-                dictOut.update({"overallResult":lineList[-1].strip("\n")})
+                dictOut.update({"overallResult":lineList[-1].strip("\n").capitalize()})
                 
             if lineList[0]=="#coil_name":
-                dictOut.update({"coilName":lineList[-1].strip("\n")})
+                dictOut.update({"coilName":lineList[-1].strip("\n")[:-4]})
  
             if lineList[0]=="#coil_serial":
                 dictOut.update({"serialNumber":lineList[-1].strip("\n")})    
@@ -92,7 +95,15 @@ def parseGE(fileIn):
     return dictOut
 
 def genCoilReport(inDir,vendorString,**kwargs):
-    import os
+    # Create a coil testing report in html and or pdf format
+
+    # Example usage
+    # mrtools.coiltesting.genCoilReport('/media/cjm/WESTPREMIER/coils/',"GE",outFile="/media/cjm/WESTPREMIER/PremierAcceptanceCoils.html")
+    # kwargs: outfile=full path to output file
+
+
+    import os,pdfkit
+
     if os.path.isdir(inDir):
         files=os.listdir(inDir)
     elif os.path.isfile(inDir):
@@ -113,9 +124,11 @@ def genCoilReport(inDir,vendorString,**kwargs):
     htmlStr=dict2html(dictOut,vendorString)
     
     if "outFile" in kwargs:
+        #FIXME path needs to have html extensions and automatically makes pdf; should change to have no extension and add kwarg to specify output file type
         htmlOut=open(kwargs["outFile"],"w")
         htmlOut.write(htmlStr)
         htmlOut.close()
+        pdfkit.from_file(kwargs["outFile"], kwargs["outFile"][:-5] + '.pdf')
     
     reportOut={"dict":dictOut,"html":htmlStr}
              
