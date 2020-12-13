@@ -2,4 +2,4 @@
 
 MR Tools
 
-Coiltesting-Functions for analyzing and compiling coil testing results
+coiltesting-Functions for analyzing and compiling coil testing results
