@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="pdfkit-margin-top" content=".75in">
+  <meta name="pdfkit-orientation" content="Landscape">
+  
+  <title>Siemens Coil Check Resuts</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+      font-size: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      /* break-after: always; */
+    }
+
+    th {
+      text-align: left;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+    }
+
+    .row {
+      break-after: always;
+      margin-left: 50px;
+    }
+
+    .outer {
+      margin: 0 auto;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    h3 {
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h4 {
+      font-size: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    hr {
+      height: 2px;
+      /* break-after: always; */
+    }
+
+    @media print {
+
+      .column {
+        float: left;
+        width: 100%;
+        padding: 10px;
+        transform: scale(1);
+        page-break-inside: avoid;
+      }
+
+      .outer {
+        margin: 0 auto;
+        page-break-inside: avoid;
+      }
+
+      /* body {margin-top: .75in; margin-bottom: .75in; 
+           margin-left: .7in; margin-right: .7in} */
+
+      @page {
+        margin-top: .75in;
+        margin-bottom: .75in;
+        margin-left: .7in;
+        margin-right: .7in
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Coil Testing - Details - Automated</h1>
+  {% for coil in coilDict.values() %}
+  <div class="outer">
+    <h2>{{ coil.coilName }}
+      <span style="float:right;">
+        {{ coil.overallResult }}
+      </span>
+    </h2>
+
+    <hr />
+
+    <div class="row">
+      <h3>Test Date & Time: {{ coil.startTime }}</h3>
+      <!-- <h3>StationName: {{ coil.stationName }}</h3> -->
+      <!-- <h3>Overall Result: {{ coil.overallResult }}</h3> -->
+      {% for protocolName in coil.protocols %}
+      <div class="column">
+        <h4> Test {{protocolName}} </h4>
+        <table style="background-color:#FFFFFF;">
+          <tr>
+            <th>Configuration</th>
+            <th>SNR</th>
+            <th>Min. SNR</th>
+            <th>Result</th>
+          </tr>
+          {% for configName,configVals in coil["protocols"][protocolName]["config"].items() %}
+          <tr>
+            <td> {{configName}}</td>
+            <td>{{configVals.SN.value}}</td>
+            <td>{{configVals.SN.min}}</td>
+            <td>{{configVals.SN.result}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- <hr/> -->
+  {% endfor %}
+</body>
+
+</html>
